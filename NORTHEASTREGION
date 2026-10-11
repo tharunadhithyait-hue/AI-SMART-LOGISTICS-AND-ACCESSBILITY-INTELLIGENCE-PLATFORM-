@@ -1,0 +1,56 @@
+# ASHTALAKSHMI: North East Region Integrated Eco-Tourism & Cultural Marketplace
+## Smart India Hackathon (SIH) Solution Overview
+
+> **Project Name:** ASHTALAKSHMI Digital Ecosystem  
+> **Target Region:** North East India (Arunachal Pradesh, Assam, Manipur, Meghalaya, Mizoram, Nagaland, Sikkim, Tripura)  
+> **Primary Objective:** Empower indigenous artisans, promote eco-tourism, digitize GI-tagged handicrafts, and build climate/geo-hazard resilient tourism trails across the 8 Sister States.
+
+---
+
+## 🌟 Key Platform Modules & Technical Architecture
+
+### 1. Interactive 8 Sister States Explorer
+- **Live Regional Spectrum:** Detailed profiles for all 8 states featuring capital cities, best travel seasons, airport accessibility, key UNESCO & eco-tourism highlights.
+- **Multilingual Support:** Dynamic language switching across English, Assamese (অসমীয়া), Manipuri (মৈতৈলোন্), Bengali (বাংলা), and Hindi (हिंदी).
+- **Audio Heritage Guides:** Simulated localized commentary player for famous monuments, national parks, and tribal heritage walks.
+
+### 2. GI-Tagged & Artisan Marketplace
+- **Direct-to-Artisan E-Commerce:** Zero-middleman model with direct UPI payment simulation.
+- **Blockchain GI Authenticity:** Instant verification badges for registered Geographical Indication (GI) products:
+  - *Assam:* Muga Silk, Joha Rice, Assam Orthodox Tea
+  - *Meghalaya:* Lakadong High-Curcumin Turmeric, Khasi Mandarin
+  - *Nagaland:* Naga King Chilli (Bhut Jolokia), Chakhesang Shawl
+  - *Manipur:* Chak-Hao Black Rice, Kachai Lemon
+  - *Sikkim:* Temi Organic Tea, Sikkim Large Cardamom
+  - *Tripura:* Tripura Queen Pineapple, Bamboo Mat Crafts
+  - *Arunachal Pradesh:* Idu Mishmi Textiles, Wakro Orange
+  - *Mizoram:* Mizo Bird's Eye Chilli, Pawndum Shawls
+
+### 3. AI Smart Itinerary Planner
+- **Custom Eco-Trails:** Algorithmic day-by-day route generation based on target state, duration (3-10 days), budget tier (Backpacker, Comfort, Luxury), and core interests (Wildlife, Tribal Heritage, High Trekking, Culinary).
+- **Certified Eco-Homestays:** Direct reservation interface supporting local family host stays.
+
+### 4. Real-time Geo-Alert & Safety Banner
+- **Monsoon & Landslide Alerts:** Dynamic alert banner updating travelers on road conditions, river water levels, and sanctuary safari availability in mountainous topographies.
+
+### 5. Cultural Festivals Calendar
+- Live schedule for major regional festivals: Hornbill Festival (Nagaland), Rongali Bihu (Assam), Ziro Music Festival (Arunachal), and Wangala 100 Drums Festival (Meghalaya).
+
+---
+
+## 📁 Repository Web Files
+
+- **`index.html`** - Core HTML5 Single Page Application structure with responsive layout, glassmorphic header, search bar, modals, and SIH impact panel.
+- **`styles.css`** - Modern UI design system with emerald dark theme (`#08110e`, `#00d68f`), glassmorphism, responsive grid breakpoints, and CSS keyframe animations.
+- **`app.js`** - Dynamic client-side logic, state data arrays, product filters, AI itinerary generator, language switcher, audio guide controller, and modal handlers.
+- **`assets/hero.png`** - High-resolution hero banner visualizing North East India's tea gardens, misty Himalayas, and pristine river valleys.
+
+---
+
+## 🚀 How to Run locally
+
+1. Open `index.html` in any modern web browser or start a local dev server:
+   ```bash
+   npx serve .
+   ```
+2. Navigate to `http://localhost:3000` to experience the full interactive ASHTALAKSHMI platform.

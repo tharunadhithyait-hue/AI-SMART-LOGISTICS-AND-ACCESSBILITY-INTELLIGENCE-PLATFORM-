@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASHTALAKSHMI: North East Region Integrated Eco-Tourism & Cultural Marketplace | SIH</title>
+    <meta name="description" content="Empowering the 8 Sister States of North East India with Eco-Tourism, GI-Tagged Artisan Marketplace, AI Itinerary Planning, and Geo-Hazard Alerts.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Real-time Geo Alert Bar -->
+    <div class="geo-alert-bar" id="geoAlertBar">
+        <div class="alert-content">
+            <span class="alert-badge"><i class="fa-solid fa-triangle-exclamation"></i> LIVE GEO-ALERT</span>
+            <span class="alert-text" id="alertText">Monsoon update: Kaziranga Safari open with modified boat routes. Dawki river crystal clarity index: EXCELLENT. Tawang pass open.</span>
+        </div>
+        <button class="alert-close" onclick="closeAlert()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="brand-logo">
+                <div class="logo-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+                <div class="logo-text">
+                    <span class="brand-name">ASHTALAKSHMI</span>
+                    <span class="brand-tagline">North East India Portal</span>
+                </div>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#hero" class="nav-link active"><i class="fa-solid fa-compass"></i> Explore</a>
+                <a href="#states" class="nav-link"><a href="#states"><i class="fa-solid fa-map-location-dot"></i> 8 Sister States</a>
+                <a href="#marketplace" class="nav-link"><i class="fa-solid fa-store"></i> GI Marketplace</a>
+                <a href="#itinerary" class="nav-link"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Planner</a>
+                <a href="#festivals" class="nav-link"><i class="fa-solid fa-drum"></i> Festivals</a>
+                <a href="#sih-dashboard" class="nav-link sih-highlight"><i class="fa-solid fa-award"></i> SIH Impact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="lang-selector">
+                    <i class="fa-solid fa-language"></i>
+                    <select id="langSelect" onchange="changeLanguage(this.value)">
+                        <option value="en">English</option>
+                        <option value="as">অসমীয়া (Assamese)</option>
+                        <option value="mni">মৈতৈলোন্ (Manipuri)</option>
+                        <option value="bn">বাংলা (Bengali)</option>
+                        <option value="hi">हिंदी (Hindi)</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" onclick="openModal('bookingModal')">
+                    <i class="fa-solid fa-paper-plane"></i> Book Homestay
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section class="hero-section" id="hero">
+        <div class="hero-bg-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fa-solid fa-seedling"></i> Sustainable Eco-Tourism & Cultural Heritage Initiative
+            </div>
+            <h1 class="hero-title">
+                Discover the Paradise of <span class="gradient-text">North East India</span>
+            </h1>
+            <p class="hero-subtitle">
+                Explore the 8 Sister States (Ashtalakshmi) — pristine landscapes, vibrant tribal cultures, GI-tagged organic treasures, and sustainable homestays.
+            </p>
+            
+            <div class="hero-search-box">
+                <div class="search-field">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" placeholder="Search Kaziranga, Muga Silk, Hornbill Fest, Dawki..." onkeyup="handleSearch()">
+                </div>
+                <div class="search-field select-field">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <select id="stateFilter" onchange="filterContent()">
+                        <option value="all">All 8 NE States</option>
+                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Manipur">Manipur</option>
+                        <option value="Meghalaya">Meghalaya</option>
+                        <option value="Mizoram">Mizoram</option>
+                        <option value="Nagaland">Nagaland</option>
+                        <option value="Sikkim">Sikkim</option>
+                        <option value="Tripura">Tripura</option>
+                    </select>
+                </div>
+                <button class="btn btn-search" onclick="triggerSearch()">
+                    <span>Explore Now</span> <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-num" id="statStates">8</span>
+                    <span class="stat-label">Enchanting States</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num" id="statArtisans">14,200+</span>
+                    <span class="stat-label">Registered Artisans</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num" id="statHomestays">650+</span>
+                    <span class="stat-label">Certified Eco-Homestays</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num" id="statGITags">32+</span>
+                    <span class="stat-label">GI Tagged Products</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8 Sister States Grid Explorer -->
+    <section class="section-container" id="states">
+        <div class="section-header">
+            <div class="section-tag"><i class="fa-solid fa-earth-asia"></i> REGIONAL SPECTRUM</div>
+            <h2 class="section-title">The 8 Sister States of North East India</h2>
+            <p class="section-desc">Click on any state card to uncover its unique eco-tourism highlights, culture, GI-tagged crafts, and travel spots.</p>
+        </div>
+
+        <div class="states-grid" id="statesGrid">
+            <!-- Dynamically populated by app.js -->
+        </div>
+    </section>
+
+    <!-- State Detail View Drawer / Modal -->
+    <div class="modal-overlay" id="stateModal" onclick="closeModalOnOverlay(event, 'stateModal')">
+        <div class="modal-card modal-large">
+            <button class="modal-close" onclick="closeModal('stateModal')"><i class="fa-solid fa-xmark"></i></button>
+            <div id="stateModalBody">
+                <!-- Loaded via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- GI Tagged Produce & Handicraft Marketplace Section -->
+    <section class="section-container bg-surface" id="marketplace">
+        <div class="section-header">
+            <div class="section-tag"><i class="fa-solid fa-certificate"></i> AUTHENTIC NE HERITAGE</div>
+            <h2 class="section-title">GI-Tagged & Artisan Marketplace</h2>
+            <p class="section-desc">Support indigenous craftspeople and organic farmers directly. Every purchase comes with a Geo-Authenticity Blockchain Certificate.</p>
+            
+            <div class="category-pills" id="marketCategories">
+                <button class="pill active" onclick="filterMarket('all', this)">All Products</button>
+                <button class="pill" onclick="filterMarket('handloom', this)"><i class="fa-solid fa-shirt"></i> Handloom & Silk</button>
+                <button class="pill" onclick="filterMarket('organic', this)"><i class="fa-solid fa-leaf"></i> Organic Spices & Tea</button>
+                <button class="pill" onclick="filterMarket('craft', this)"><i class="fa-solid fa-spa"></i> Bamboo & Cane Craft</button>
+                <button class="pill" onclick="filterMarket('food', this)"><i class="fa-solid fa-utensils"></i> Heritage Food</button>
+            </div>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+            <!-- Dynamically populated by app.js -->
+        </div>
+    </section>
+
+    <!-- AI Smart Travel & Itinerary Planner Section -->
+    <section class="section-container" id="itinerary">
+        <div class="planner-box">
+            <div class="planner-info">
+                <div class="section-tag"><i class="fa-solid fa-brain"></i> AI TRIP ENGINE</div>
+                <h2 class="planner-title">Smart North East Itinerary Planner</h2>
+                <p class="planner-desc">Tell us your travel preferences, days, and budget. Our regional AI engine curates a eco-conscious, zero-waste, immersive itinerary complete with verified local homestays and transport logistics.</p>
+
+                <form id="itineraryForm" onsubmit="generateItinerary(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-compass"></i> Target State</label>
+                            <select id="planState" required>
+                                <option value="Assam & Meghalaya Combo">Assam & Meghalaya (Popular Combo)</option>
+                                <option value="Arunachal Pradesh">Arunachal Pradesh (Highlands & Monasteries)</option>
+                                <option value="Sikkim">Sikkim (High-Altitude Lakes & Rhododendrons)</option>
+                                <option value="Nagaland & Manipur">Nagaland & Manipur (Tribal Culture & Loktak)</option>
+                                <option value="Mizoram & Tripura">Mizoram & Tripura (Unexplored Trails)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-calendar-days"></i> Duration (Days)</label>
+                            <select id="planDays" required>
+                                <option value="3">3 Days (Quick Getaway)</option>
+                                <option value="5" selected>5 Days (Standard Explorer)</option>
+                                <option value="7">7 Days (Full Immersive)</option>
+                                <option value="10">10 Days (Grand Circuit)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-wallet"></i> Budget Tier</label>
+                            <select id="planBudget" required>
+                                <option value="Backpacker">Backpacker / Student (Budget)</option>
+                                <option value="Comfort" selected>Comfort Eco-Tourist (Mid-range)</option>
+                                <option value="Luxury">Luxury Heritage & Glamping</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fa-solid fa-heart"></i> Core Interest</label>
+                            <select id="planInterest" required>
+                                <option value="Wildlife & Nature">Wildlife Safaris & Waterfalls</option>
+                                <option value="Tribal Heritage">Tribal Festivals & Handloom</option>
+                                <option value="Trekking & Adventure">High Trekking & River Rafting</option>
+                                <option value="Culinary & Organic">Organic Tea, Spices & Food Trail</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-emerald btn-block">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Personalized Itinerary
+                    </button>
+                </form>
+            </div>
+
+            <div class="planner-result-card" id="itineraryResult">
+                <div class="result-placeholder">
+                    <i class="fa-solid fa-route placeholder-icon"></i>
+                    <h3>Your Custom Itinerary will appear here</h3>
+                    <p>Select your parameters on the left and click "Generate" to preview day-wise routes, budget breakdown, and homestay contacts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Festivals Calendar Section -->
+    <section class="section-container bg-surface" id="festivals">
+        <div class="section-header">
+            <div class="section-tag"><i class="fa-solid fa-calendar-star"></i> VIBRANT CELEBRATIONS</div>
+            <h2 class="section-title">Iconic Festivals Calendar</h2>
+            <p class="section-desc">Plan your visit around the grand cultural celebrations of the 8 states.</p>
+        </div>
+
+        <div class="festivals-timeline" id="festivalsGrid">
+            <!-- Dynamically populated by app.js -->
+        </div>
+    </section>
+
+    <!-- SIH Hackathon Solution & Impact Dashboard Section -->
+    <section class="section-container" id="sih-dashboard">
+        <div class="sih-card">
+            <div class="sih-header">
+                <div class="sih-badge"><i class="fa-solid fa-trophy"></i> SMART INDIA HACKATHON SOLUTION</div>
+                <h2>Problem Statement: Integrated Digital Platform for North East Region Development</h2>
+                <p>Addressing Economic Growth, Heritage Preservation, Sustainable Eco-Tourism & Direct Artisan Empowerment across all 8 NE States.</p>
+            </div>
+
+            <div class="sih-pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fa-solid fa-hands-holding-child"></i></div>
+                    <h3>Direct Artisan Empowerment</h3>
+                    <p>Eliminating middlemen with direct UPI payments, QR-code GI authenticity certificates, and micro-logistics support for rural artisans.</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fa-solid fa-route"></i></div>
+                    <h3>Eco-Tourism & Homestay Engine</h3>
+                    <p>Geotagged verified tribal homestays, transparent pricing, zero-carbon trail recommendations, and audio-guided cultural walks.</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Disaster & Geo-Hazard Resilience</h3>
+                    <p>Real-time weather tracking, landslide alert feeds, and emergency SOS routing for high-altitude tourists & locals.</p>
+                </div>
+
+                <div class="pillar-card">
+                    <div class="pillar-icon"><i class="fa-solid fa-language"></i></div>
+                    <h3>Multilingual & Audio Inclusivity</h3>
+                    <p>Localization in Assamese, Manipuri, Bengali, Hindi, and English with offline audio guides for remote locations.</p>
+                </div>
+            </div>
+
+            <div class="sih-tech-stack">
+                <h3>Architecture & Tech Stack</h3>
+                <div class="tech-tags">
+                    <span class="tech-tag"><i class="fa-brands fa-html5"></i> HTML5 / Modern DOM</span>
+                    <span class="tech-tag"><i class="fa-brands fa-css3-alt"></i> Modern CSS (Variables, Glassmorphic Grid)</span>
+                    <span class="tech-tag"><i class="fa-brands fa-js"></i> Vanilla JS ES6+ (Zero external bloat)</span>
+                    <span class="tech-tag"><i class="fa-solid fa-layer-group"></i> GeoJSON & Spatial Mapping Ready</span>
+                    <span class="tech-tag"><i class="fa-solid fa-qrcode"></i> QR GI Tag Authenticator</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Inquiry / Order Modal -->
+    <div class="modal-overlay" id="productModal" onclick="closeModalOnOverlay(event, 'productModal')">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('productModal')"><i class="fa-solid fa-xmark"></i></button>
+            <div id="productModalBody">
+                <!-- Dynamically filled -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Homestay Booking Modal -->
+    <div class="modal-overlay" id="bookingModal" onclick="closeModalOnOverlay(event, 'bookingModal')">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('bookingModal')"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-house-user"></i> Reserve Certified Eco-Homestay</h2>
+                <p>Support indigenous host families directly in North East India.</p>
+            </div>
+            <form onsubmit="handleBookingSubmit(event)" class="modal-form">
+                <div class="form-group">
+                    <label>Select State & Destination</label>
+                    <select id="bookStateSelect" required>
+                        <option value="Assam - Majuli Island Homestay">Assam - Majuli Island Bamboo Cottage (₹1,500/night)</option>
+                        <option value="Meghalaya - Cherrapunji Living Root Lodge">Meghalaya - Cherrapunji Living Root Lodge (₹1,800/night)</option>
+                        <option value="Nagaland - Khonoma Green Village Stay">Nagaland - Khonoma Green Village Stay (₹2,000/night)</option>
+                        <option value="Sikkim - Yuksom Himalayan Homestay">Sikkim - Yuksom Himalayan Homestay (₹2,200/night)</option>
+                        <option value="Arunachal - Ziro Tribal Homestay">Arunachal Pradesh - Ziro Apatani Homestay (₹1,600/night)</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Check-in Date</label>
+                        <input type="date" required min="2026-09-07">
+                    </div>
+                    <div class="form-group">
+                        <label>Guests</label>
+                        <input type="number" min="1" max="10" value="2" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" placeholder="Tharun Adhithya" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone / WhatsApp</label>
+                    <input type="tel" placeholder="+91 98765 43210" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Confirm Homestay Booking Demo</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Audio Player Bar (Simulated Regional Audio Guide) -->
+    <div class="audio-bar" id="audioBar">
+        <div class="audio-info">
+            <i class="fa-solid fa-headphones audio-icon pulse"></i>
+            <div>
+                <span class="audio-title" id="audioTitle">Kaziranga Rhinoceros Sanctuary Audio Guide</span>
+                <span class="audio-sub">Language: English (Assamese regional narrative)</span>
+            </div>
+        </div>
+        <div class="audio-controls">
+            <button class="audio-btn" onclick="toggleAudio()"><i class="fa-solid fa-pause" id="audioPlayIcon"></i></button>
+            <div class="audio-progress"><div class="progress-fill" id="audioProgress"></div></div>
+            <button class="audio-btn-close" onclick="stopAudio()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <div class="brand-logo">
+                    <div class="logo-icon"><i class="fa-solid fa-mountain-sun"></i></div>
+                    <span class="brand-name">ASHTALAKSHMI</span>
+                </div>
+                <p>Empowering the 8 Sister States of North East India through sustainable digital innovation, artisan e-commerce, eco-tourism, and culture preservation.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>The 8 Sister States</h4>
+                <ul>
+                    <li><a href="javascript:void(0)" onclick="openStateDetail('Arunachal Pradesh')">Arunachal Pradesh</a></li>
+                    <li><a href="javascript:void(0)" onclick="openStateDetail('Assam')">Assam</a></li>
+                    <li><a href="javascript:void(0)" onclick="openStateDetail('Manipur')">Manipur</a></li>
+                    <li><a href="javascript:void(0)" onclick="openStateDetail('Meghalaya')">Meghalaya</a></li>
+                    <li><a href="javascript:void(0)" onclick="openStateDetail('Mizoram')">Mizoram</a></li>
+                    <li><a href="javascript:void(0)" onclick="openStateDetail('Nagaland')">Nagaland</a></li>
+                    <li><a href="javascript:void(0)" onclick="openStateDetail('Sikkim')">Sikkim</a></li>
+                    <li><a href="javascript:void(0)" onclick="openStateDetail('Tripura')">Tripura</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Platform Modules</h4>
+                <ul>
+                    <li><a href="#marketplace">GI Tagged Handicrafts</a></li>
+                    <li><a href="#itinerary">AI Smart Trip Planner</a></li>
+                    <li><a href="#festivals">Cultural Events Calendar</a></li>
+                    <li><a href="#sih-dashboard">SIH Architecture & Metrics</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Emergency Contact & SOS</h4>
+                <p><i class="fa-solid fa-phone"></i> NE Tourist Emergency: 1800-11-1363</p>
+                <p><i class="fa-solid fa-cloud-bolt"></i> Disaster Management Feed: Active</p>
+                <p><i class="fa-solid fa-shield"></i> Blockchain GI Tag Authenticator</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ASHTALAKSHMI Portal | Built for Smart India Hackathon (SIH) - North East Region</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
